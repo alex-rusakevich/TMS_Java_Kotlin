@@ -6,6 +6,7 @@ public class Homework {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void excercise1() {
+        // Это - упражнение 1, 1000%!!
         System.out.println("Упражнение 1");
 
         int width = scanner.nextInt(), height = scanner.nextInt();
