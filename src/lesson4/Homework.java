@@ -1,6 +1,5 @@
 package lesson4;
 
-import java.util.Collections;
 import java.util.Scanner;
 
 public class Homework {
