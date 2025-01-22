@@ -1,5 +1,6 @@
 package lesson4;
 
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Homework {
@@ -10,10 +11,15 @@ public class Homework {
         System.out.print("Enter your string: ");
         String strIn = scanner.nextLine();
 
+        String[] parts = strIn.split(" ");
+        StringBuilder strOut = new StringBuilder();
+
+        for (int i = parts.length - 1; i >= 0; i--) {
+            strOut.append(parts[i]).append(" ");
+        }
+
         System.out.print("Reversed: ");
-        System.out.println(
-                new StringBuilder(strIn).reverse()
-        );
+        System.out.println(strOut);
         // #endregion
 
         // #region Exercise 2
