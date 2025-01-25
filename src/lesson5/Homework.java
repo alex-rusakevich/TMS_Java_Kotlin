@@ -6,12 +6,7 @@ import java.util.Scanner;
 public class Homework {
     static Scanner scanner = new Scanner(System.in);
 
-    private static void task1(int[] arr) {
-        if (arr.length == 0) {
-            System.out.println("Cannot find min and max for an empty array.");
-            return;
-        }
-
+    private static void task1ArrMinMax(int[] arr) {
         int min, min_index, max, max_index;
 
         min = arr[0];
@@ -36,12 +31,7 @@ public class Homework {
         System.out.printf("Min value: %d, index: %d\n\n", min, min_index);
     }
 
-    private static void task2(int[] arr) {
-        if (arr.length == 0) {
-            System.out.println("Cannot find evens and odds for an empty array.");
-            return;
-        }
-
+    private static void task2ArrOddEven(int[] arr) {
         int count_evens = 0, count_odds = 0;
 
         for (int j : arr) {
@@ -55,7 +45,7 @@ public class Homework {
         System.out.printf("Evens: %d, odds: %d\n\n", count_evens, count_odds);
     }
 
-    private static void task3(int[] arr) {
+    private static void task3ReverseArr(int[] arr) {
         int temp;
 
         int left = 0;
@@ -73,7 +63,7 @@ public class Homework {
         System.out.printf("Reversed: %s\n\n", Arrays.toString(arr));
     }
 
-    private static void task4(int[] arr) {
+    private static void task4ArrPalindrome(int[] arr) {
         boolean isPalindrome = true;
 
         int left = 0;
@@ -93,9 +83,10 @@ public class Homework {
 
     public static void main(String[] args) {
         int arrSize;
-
-        System.out.print("Your array's size: ");
-        arrSize = scanner.nextInt();
+        do {
+            System.out.print("Your array's size (>=2): ");
+            arrSize = scanner.nextInt();
+        } while (arrSize < 2);
 
         int[] arr = new int[arrSize];
 
@@ -107,9 +98,9 @@ public class Homework {
 
         System.out.println();
 
-        task1(arr);
-        task2(arr);
-        task3(arr);
-        task4(arr);
+        task1ArrMinMax(arr);
+        task2ArrOddEven(arr);
+        task3ReverseArr(arr);
+        task4ArrPalindrome(arr);
     }
 }
