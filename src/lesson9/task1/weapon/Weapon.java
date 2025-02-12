@@ -1,8 +1,8 @@
-package lesson9.task1;
+package lesson9.task1.weapon;
 
 import java.util.Random;
 
-abstract class Weapon {
+public abstract class Weapon {
     private int damage;
     private Random r;
 

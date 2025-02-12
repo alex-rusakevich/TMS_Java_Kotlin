@@ -1,4 +1,4 @@
-package lesson9.task1;
+package lesson9.task1.hero;
 
 import lesson9.task1.armor.Armor;
 import lesson9.task1.weapon.Weapon;
@@ -17,11 +17,18 @@ public abstract class Hero {
     }
 
     public int attack(int diceVal) {
-        return weapon.getDamage() + diceVal;
+        int deliveredDamage = weapon.getDamage() + diceVal;
+
+        System.out.printf("Hero %s rolled dice: %d, delivered damage: %d\n", name, diceVal, deliveredDamage);
+
+        return deliveredDamage;
     }
 
     public void recieveDamage(int damage) {
-        hp -= armor.reduceDamage(damage);
+        int damageDelta = armor.reduceDamage(damage);
+        hp -= damageDelta;
+
+        System.out.printf("Hero %s lost %d hp, hp remaining: %d\n", name, damageDelta, hp);
     }
 
     public boolean isAlive() {

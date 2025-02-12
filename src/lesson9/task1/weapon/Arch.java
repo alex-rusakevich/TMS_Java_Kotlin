@@ -1,9 +1,9 @@
-package lesson9.task1;
+package lesson9.task1.weapon;
 
 import java.util.Random;
 
 public class Arch extends Weapon {
-    Arch(int damage, Random r) {
+    public Arch(int damage, Random r) {
         super(damage, r);
     }
 

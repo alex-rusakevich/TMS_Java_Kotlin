@@ -1,6 +1,6 @@
-package lesson9.task1;
+package lesson9.task1.armor;
 
-abstract class Armor {
+public abstract class Armor {
     private int armorRating;
     private int durability;
 
