@@ -1,4 +1,4 @@
-package lesson9.task1.weapon;
+package lesson9.fightingGame.weapon;
 
 import java.util.Random;
 
@@ -13,5 +13,9 @@ public class Arch extends Weapon {
         int crit = r.nextInt(0, 1);
 
         return super.getDamage() + crit;
+    }
+
+    public boolean canAttackFromDistance(int distance) {
+        return distance >= 1;
     }
 }

@@ -1,4 +1,4 @@
-package lesson9.task1.weapon;
+package lesson9.fightingGame.weapon;
 
 import java.util.Random;
 
@@ -12,7 +12,11 @@ public abstract class Weapon {
     }
 
     public int getDamage() {
-        return r.nextInt(0, damage);
+        return damage;
+    }
+
+    public boolean canAttackFromDistance(int distance) {
+        return true;
     }
 
     public Random getRandom() {
