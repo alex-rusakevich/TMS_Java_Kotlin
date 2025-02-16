@@ -14,4 +14,8 @@ public class Arch extends Weapon {
 
         return super.getDamage() + crit;
     }
+
+    public boolean canAttackFromDistance(int distance) {
+        return distance >= 1;
+    }
 }

@@ -12,7 +12,11 @@ public abstract class Weapon {
     }
 
     public int getDamage() {
-        return r.nextInt(damage);
+        return damage;
+    }
+
+    public boolean canAttackFromDistance(int distance) {
+        return true;
     }
 
     public Random getRandom() {

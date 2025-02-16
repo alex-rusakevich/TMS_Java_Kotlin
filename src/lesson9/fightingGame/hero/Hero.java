@@ -32,17 +32,18 @@ public abstract class Hero {
         }
     }
 
-    public int criticalAttack() throws Exception {
+    public int criticalAttack() {
         if (crits >= 1) {
             crits -= 1;
-            int damage = weapon.getDamage() * 2;
+            int damage = weapon.getDamage();
 
             System.out.println("Not bad, kiddo");
             System.out.printf("Hero %s delivered critical damage: %d\n", name, damage);
 
             return damage;
         } else {
-            throw new Exception("Cannot perform critical attack when have no critical chances");
+            System.out.println("Nope.");
+            return 0;
         }
     }
 
@@ -66,7 +67,16 @@ public abstract class Hero {
         }
     }
 
+    public void recievePureDamage(int damage) {
+        hp -= damage;
+        System.out.printf("Hero %s lost %d hp when his armor was pierced, hp remaining: %d\n", name, damage, hp);
+    }
+
     public boolean isAlive() {
         return hp > 0;
+    }
+
+    public Weapon getWeapon() {
+        return weapon;
     }
 }

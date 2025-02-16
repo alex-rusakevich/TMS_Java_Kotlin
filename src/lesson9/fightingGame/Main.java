@@ -47,7 +47,7 @@ public class Main {
     private static Hero chooseHero(){
         scanner = new Scanner(System.in);
 
-        System.out.print("Имя: ");
+        System.out.print("Name: ");
         String name = scanner.nextLine();
 
         System.out.print("Paladin, rogue or archer? ");
@@ -55,17 +55,19 @@ public class Main {
 
         switch (choice){
             case 1:
-                return new Paladin(name, 20, new HeavyArmor(15, 6), new Sword(5, random));
+                return new Paladin(name, 40, new HeavyArmor(15, 6), new Sword(5, random));
             case 2:
-                return new Rogue(name, 15, new MediumArmor(10, 4), new Dagger(10, random));
+                return new Rogue(name, 30, new MediumArmor(10, 4), new Dagger(7, random));
             case 3:
-                return new Archer(name, 10, new LightArmor(5, 2), new Arch(15, random));
+                return new Archer(name, 20, new LightArmor(5, 2), new Arch(9, random));
         }
 
         return null;
     }
 
-    private static void fight(){
+    private static void fight() {
+        Scanner commandScanner = new Scanner(System.in);
+        int distance = 5;
         List<Hero> heroOrder = List.of(hero1, hero2);
 
         if(dice.roll() % 2 == 1) { // Swap turns
@@ -77,6 +79,7 @@ public class Main {
         gameLoop:
         while(true) {
             System.out.printf("=== Round %d. Fight! ===\n", round);
+            System.out.printf("Distance between heroes: %d m\n", distance);
 
             for (Hero current_hero : heroOrder) {
                 Hero current_enemy;
@@ -87,9 +90,48 @@ public class Main {
                     current_enemy = hero1;
                 }
 
-                System.out.printf("-> %s attacks %s\n", current_hero.name, current_enemy.name);
+                System.out.printf("Hero %s, what will you do? [attack, crit(%d), approach] ",
+                        current_hero.name, current_hero.getCrits());
+                String command = commandScanner.nextLine().trim().toLowerCase();
 
-                current_enemy.recieveDamage(current_hero.attack(dice.roll()), dice.roll());
+                switch (command) {
+                    case "attack":
+                        if(!current_hero.getWeapon().canAttackFromDistance(distance)) {
+                            System.out.println("Congrats! You've just showed off and dealt no damage");
+                            System.out.println("The distance is not suitable for your weapon");
+                            continue;
+                        }
+
+                        System.out.printf("%s attacks %s\n", current_hero.name, current_enemy.name);
+                        current_enemy.recieveDamage(current_hero.attack(dice.roll()), dice.roll());
+                        break;
+                    case "crit":
+                        if(!current_hero.getWeapon().canAttackFromDistance(distance)) {
+                            System.out.println("Congrats! You've just showed off and dealt no damage");
+                            System.out.println("The distance is not suitable for your weapon");
+                            continue;
+                        }
+
+                        System.out.printf("%s CRITICALLY attacks %s\n", current_hero.name, current_enemy.name);
+
+                        if(!current_hero.hasCrits()) {
+                            System.out.println("You strained your hands and... did nothing: you have no crits.");
+                            System.out.println("Your turn is skipped. ");
+                            System.out.println("Be more careful next time.");
+                            continue;
+                        } else {
+                            current_enemy.recievePureDamage(current_hero.criticalAttack());
+                        }
+                        break;
+                    case "approach":
+                        if(distance <= 0) {
+                            System.out.println("Are you trying to hug him or what? There is no place for approaching");
+                            continue;
+                        }
+
+                        System.out.println("You approached 1 m");
+                        distance--;
+                }
 
                 if (!current_enemy.isAlive()) {
                     System.out.printf("%s dies, %s wins!\n", current_enemy.name, current_hero.name);
