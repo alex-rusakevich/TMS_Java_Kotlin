@@ -5,6 +5,11 @@ import java.util.List;
 import java.util.ListIterator;
 
 public class Main {
+    /*
+        Задача 1: Последний оставшийся элемент (LinkedList)
+        В круге из n человек каждый 2-й выбывает, пока не останется один. Используйте
+        LinkedList для моделирования.
+    */
     private static void task1(){
         LinkedList<String> people = new LinkedList<>(List.of(
             "Володя", "Витя", "Тот самый чел, э-э...",
@@ -26,6 +31,11 @@ public class Main {
         }
     }
 
+    /*
+        Задача 2: Слияние двух отсортированных LinkedList в один (без Set, Map)
+        Даны два отсортированных LinkedList, нужно слить их в один отсортированный
+        список.
+    */
     private static void task2(){
         LinkedList<Integer> ll1 = new LinkedList<>(List.of(
                 1,3,5
@@ -64,8 +74,27 @@ public class Main {
         System.out.println(merged);
     }
 
+    /*
+        Задача 3*: Однонаправленный список
+        Напишите реализацию однонаправленного списка без использования Collection и
+        массивов. Должны быть методы добавления, удаления и поиска элементов.
+        ** реализовать все операции по индексу
+    */
     private static void task3(){
+        SingleDirectionList<String> singleDirectionList = new SingleDirectionList<>(
+                List.of("Maya", "Hee", "Maya", "Hoo", "Maya", "Ha-ha")
+        );
 
+        System.out.println(singleDirectionList.toList());
+
+        System.out.println(singleDirectionList.size());
+        singleDirectionList.remove(1);
+        System.out.println(singleDirectionList.size());
+
+        singleDirectionList.add(1, "He-e-e");
+        System.out.println(singleDirectionList.get(1));
+
+        System.out.println(singleDirectionList.toList());
     }
 
     public static void main(String[] args) {
