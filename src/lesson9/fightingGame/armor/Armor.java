@@ -1,4 +1,4 @@
-package lesson9.task1.armor;
+package lesson9.fightingGame.armor;
 
 public abstract class Armor {
     private int armorRating;
