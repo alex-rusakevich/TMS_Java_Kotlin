@@ -1,4 +1,4 @@
-package lesson14.homework;
+package lesson15.homework;
 
 /*
 * Задача 3: Синхронизация потоков для предотвращения гонки данных
