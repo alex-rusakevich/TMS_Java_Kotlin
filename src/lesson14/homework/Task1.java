@@ -1,4 +1,4 @@
-package lesson15.homework;
+package lesson14.homework;
 
 /*
 * Задача 1: Синхронизация доступа к счетчику с помощью внешнего объекта
